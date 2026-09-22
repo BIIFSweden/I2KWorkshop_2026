@@ -2,7 +2,7 @@
 authors = ["Suganya Sivagurunathan <suganya.nathan@gmail.com>"]
 channels = ["conda-forge"]
 name = "I2KWorkshop_2026"
-platforms = ["win-64"]
+platforms = ["win-64", "linux-64"]
 version = "0.1.0"
 
 [tasks]
@@ -14,6 +14,7 @@ matplotlib = ">=3.11.1,<4"
 spatialdata = ">=0.8.0,<0.9"
 pandas = ">=3.0.5,<4"
 tifffile = ">=2026.9.9,<2027"
+scikit-image = ">=0.26.0,<0.27"
 ipykernel = ">=7.3.0,<8"
 jupyter = ">=1.1.1,<2"
 
