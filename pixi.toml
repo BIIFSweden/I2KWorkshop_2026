@@ -2,33 +2,42 @@
 authors = ["Suganya Sivagurunathan <suganya.nathan@gmail.com>"]
 channels = ["conda-forge"]
 name = "I2KWorkshop_2026"
-platforms = ["win-64", "linux-64"]
+platforms = ["win-64", "linux-64", "osx-arm64"]
 version = "0.1.0"
 
-[tasks]
-
 [activation.env]
-# Works around a hard kernel crash (Windows SEH exception 0xc06d007f) triggered when
-# Intel MKL's threaded LAPACK calls (e.g. scipy.linalg.inv, used by skimage.color at
-# import time) hit a threading-layer conflict with another OpenMP runtime already
-# loaded in-process (e.g. via numba/llvmlite). Forcing MKL to run single-threaded
-# avoids the conflict; the affected calls are on tiny matrices so there's no
-# meaningful performance cost.
 MKL_THREADING_LAYER = "SEQUENTIAL"
 
 [dependencies]
-itk = ">=5.4.7,<6"
-numpy = ">=2.5.3,<3"
-matplotlib = ">=3.11.1,<4"
-spatialdata = ">=0.8.0,<0.9"
-pandas = ">=3.0.5,<4"
-tifffile = ">=2026.9.9,<2027"
-scikit-image = ">=0.26.0,<0.27"
-ipykernel = ">=7.3.0,<8"
-jupyter = ">=1.1.1,<2"
-python = ">=3.12.14,<3.13"
-pip = ">=26.2.1,<27"
+pip = "*"
+ipykernel = "*"
+jupyter = "*"
 
-[pypi-dependencies]
-itk-elastix = ">=0.25.4, <0.26"
-spatialdata-plot = ">=0.4.2, <0.5"
+[feature.spatial.dependencies]
+python = "3.12.*"
+numpy = ">=1.26,<3"
+matplotlib = ">=3.8,<4"
+pandas = ">=2,<3"
+tifffile = "*"
+scikit-image = ">=0.22,<0.27"
+spatialdata = ">=0.8.0,<0.9"
+
+[feature.spatial.pypi-dependencies]
+spatialdata-plot = ">=0.4.2,<0.5"
+spatialdata-io = "*"
+
+[feature.registration.dependencies]
+python = "3.11.*"
+numpy = ">=1.26,<3"
+matplotlib = ">=3.8,<4"
+pandas = ">=2,<3"
+tifffile = "*"
+scikit-image = ">=0.22,<0.27"
+
+[feature.registration.pypi-dependencies]
+itk = ">=5.4,<6"
+itk-elastix = "*"
+
+[environments]
+spatial = ["spatial"]
+registration = ["registration"]
