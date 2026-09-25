@@ -4,13 +4,13 @@ Course materials for the workshop _Integration of multi-modal data and visualiza
 
 ## Overview
 
-This repository contains the Jupyter notebooks, helper code and software environment used during the workshop. The accompanying slides are available [here](https://example.com/slides) <!-- TODO: replace with link to slides -->.
+This repository contains the Jupyter notebooks, helper code and software environment used during the workshop. <!--The accompanying slides are available [here](https://example.com/slides) TODO: replace with link to slides -->.
 
 ## Prerequisites
 
 - [Git](https://git-scm.com/) (optional, for cloning the repository)
 - [Pixi](https://pixi.sh/latest/#installation) package manager
-- A supported platform: Linux (x86-64), Windows (x86-64) or macOS (Apple Silicon or Intel) <!-- TODO: add osx-arm64 and osx-64 to platforms in pixi.toml and update pixi.lock -->
+- A supported platform: Linux (x86-64), Windows (x86-64) or macOS (Apple Silicon) <!-- TODO: add osx-arm64 and osx-64 to platforms in pixi.toml and update pixi.lock -->
 - The course data, available on [Zenodo](https://zenodo.org/records/22948439)
 
 ## Instructions
@@ -33,13 +33,26 @@ This repository contains the Jupyter notebooks, helper code and software environ
    └── MultimodalData/
    ```
 
-3. Start Jupyter (on first run, Pixi automatically installs the environment defined in `pixi.toml`):
+3. Install the Pixi environments and register the Jupyter kernels:
 
    ```bash
-   pixi run jupyter notebook
+   pixi install -e spatial
+   pixi install -e registration
+
+   pixi run -e spatial python -m ipykernel install --user --name i2k-spatial --display-name "I2K Spatial"
+   pixi run -e registration python -m ipykernel install --user --name i2k-registration --display-name "I2K Registration"
    ```
 
-4. Open the notebooks from the Jupyter interface in your browser.
+4. Start Jupyter from the registration environment:
+
+   ```
+   pixi run -e registration jupyter notebook
+   ```
+
+5. Open the notebooks from the Jupyter interface in your browser and select the appropriate kernel:
+
+   * `I2K Registration` kernel for `ImageRegistration.ipynb` and `ImageRegistrationHistology.ipynb`
+   * `I2K Spatial` kernel for `SpatialData.ipynb`
 
 ## Repository contents
 
@@ -52,11 +65,11 @@ This repository contains the Jupyter notebooks, helper code and software environ
 | `registration_utils.py`            | Helper functions used by the image registration notebooks |
 | `pixi.toml`, `pixi.lock`           | Software environment specification                        |
 
-## Citation
+<!--## Citation
 
 If you use these materials, please cite them as follows:
 
-> SciLifeLab BioImage Informatics Unit (2026). _Integration of multi-modal data and visualization using TissUUmaps 4_ [Course materials]. Zenodo. https://doi.org/10.5281/zenodo.XXXXXXX <!-- TODO: replace with Zenodo DOI -->
+> SciLifeLab BioImage Informatics Unit (2026). _Integration of multi-modal data and visualization using TissUUmaps 4_ [Course materials]. Zenodo. https://doi.org/10.5281/zenodo.XXXXXXX TODO: replace with Zenodo DOI -->
 
 ## License
 
@@ -64,7 +77,7 @@ The contents of this repository are licensed under the [MIT License](LICENSE).
 
 ## Acknowledgements
 
-This workshop is organized by the [SciLifeLab BioImage Informatics Unit](https://www.scilifelab.se/units/bioimage-informatics/) (BIIF). We thank the organizers of I2KxBINA2026 for hosting the workshop.
+This workshop is conducted by the [SciLifeLab BioImage Informatics Unit](https://www.scilifelab.se/units/bioimage-informatics/) (BIIF) and National Bioinformatics Infrastructure Sweden (NBIS). We thank the organizers of I2KxBINA2026 for hosting the workshop.
 
 ## Contact
 
