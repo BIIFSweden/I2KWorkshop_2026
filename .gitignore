@@ -1,3 +1,7 @@
 # pixi environments
 .pixi/*
 !.pixi/config.toml
+
+# course data (downloaded from Zenodo)
+data/*
+!data/.gitkeep
