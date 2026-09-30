@@ -2,7 +2,7 @@
 authors = ["Suganya Sivagurunathan <suganya.nathan@gmail.com>"]
 channels = ["conda-forge"]
 name = "I2KWorkshop_2026"
-platforms = ["win-64", "linux-64", "osx-arm64"]
+platforms = ["win-64", "linux-64", "osx-arm64", "osx-64"]
 version = "0.1.0"
 
 [activation.env]
